@@ -1,13 +1,77 @@
-body {
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+:root{
+  
+}
+/* COMPONENTS ----- NAVBAR-----  */
+.header{
+  height: 70px !important;
+  background-color: #211d399c;
+}
+.nav-main{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+  align-items: center;
+}
+.logo-main{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+}
+.header .nav-main .left .logo-main p{
+  margin-bottom: 0;
+  font-size: 30px;
+  color: #fff;
+}
+.header .nav-main .left .logo-main span{
+  font-weight: 600;
+  font-style: italic;
+}
+.left{
+  flex: 1;
+}
+.center{
+  flex: 2;
+  justify-content: center;
+  background: unset !important;
+  border: none !important;
+  font-size: 20px !important;
+  align-items: center;
+  color: #fff !important;
+  font-weight: 400;
+}
+.icon-size{
+  font-size: 20px !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected{
+  color: #fff !important;
 }
+
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected::after{
+  border-bottom: 2px solid #fff !important;
+}
+.right{
+  flex: 1;
+  text-align: center;
+
+}
+.btn-login{
+  border: none;
+  background: none;
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+  cursor: pointer;
+}
+.btn-login:hover{
+  border-bottom: 2px solid #fff;
+}
+
