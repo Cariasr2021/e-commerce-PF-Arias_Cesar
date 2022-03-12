@@ -1,11 +1,12 @@
 *{
   margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
+  padding: 0 ;
+  font-family: 'Roboto', sans-serif !important;
 }
 :root{
   
 }
+
 /* COMPONENTS ----- NAVBAR-----  */
 .header{
   height: 70px !important;
@@ -47,7 +48,7 @@
   font-weight: 400;
 }
 .icon-size{
-  font-size: 20px !important;
+  font-size: 25px !important;
 }
 
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected{
@@ -60,8 +61,10 @@
 }
 .right{
   flex: 1;
-  text-align: center;
-
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
 }
 .btn-login{
   border: none;
@@ -74,4 +77,34 @@
 .btn-login:hover{
   border-bottom: 2px solid #fff;
 }
-
+/* Fin ------Nav-bar ------ */
+/* COMPONENTS --------- Cart Widget ------ */
+.icon-cartwidget{
+  font-size: 30px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.contador-cartwidget{
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: #211d399c;
+  margin: -20px 0px 0px -15px;
+}
+.icon-cartwidget .contador-cartwidget p{
+  margin-bottom: 0;
+  font-size: 12px;
+  font-weight: 900;
+}
+/* FIN ----- Cart Widget ------- */
+/* COMPONENTS -------- Item List Widget ---------- */
+.itemListContainer{
+  text-align: center;
+  margin-top: 20px;
+}
