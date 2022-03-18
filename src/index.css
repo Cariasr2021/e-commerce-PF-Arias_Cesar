@@ -12,7 +12,7 @@
   height: 70px !important;
   background-color: #211d399c;
 }
-.nav-bar{
+.container{
   max-width: 1300px;
   margin: 0 auto;
   width: 90%;
@@ -223,4 +223,20 @@ align-items: center !important;
 .itemListContainer{
   text-align: center;
   margin-top: 20px;
+}
+
+
+.site-card-wrapper {
+  padding: 30px;
+  background: #ececec;
+}
+
+.card-producto{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card-contador{
+  display: flex;
+  justify-content: space-around;
 }
