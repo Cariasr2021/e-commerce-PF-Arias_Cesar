@@ -236,7 +236,35 @@ align-items: center !important;
   flex-direction: column;
   gap: 10px;
 }
+.space-count{
+  display: flex !important;
+  justify-content: center !important;
+  gap: 10px !important;
+}
 .card-contador{
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+.btn-onAdd{
+  background-color: #ea2840 !important;
+  border-color: #ea2840 !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+}
+.btn-incrementador{
+  background-color: #ea2840 !important;
+  border-color: #ea2840 !important;
+  color: #fff !important;
+  font-weight: 900 !important;
+  font-size: 18px !important;
+  border-radius: 8px !important;
+  height: unset !important;
+}
+.ant-modal-body{
+  padding-top: 0 !important;
+}
+.modal-precio{
+  color: #ea2840;
+  font-weight: 700;
 }

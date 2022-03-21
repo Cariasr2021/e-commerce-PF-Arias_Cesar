@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from "react";
-import { message, Button } from "antd";
+import { message, Button, Space} from "antd";
 
 const ItemCount = (stock) => {
   const [count, setCount] = useState(0);
 
-  const mensaje = () => {
+  const onAdd = () => {
     if (count > 0) {
       message.success(`Producto agregado exitosamente: ${count}`);
     } else {
@@ -25,18 +25,15 @@ const ItemCount = (stock) => {
     setCount(count - 1);
   };
 
-  const agregarProducto = () => {
-    stock.onAdd(count);
-  };
   return (
-    <Fragment>
-      <div className="card-contador">
-        <Button onClick={restarContador}>-</Button>
+    <Space direction="vertical" className="space-count" >
+      <div className="card-contador" >
+        <Button className="btn-incrementador" onClick={restarContador}>-</Button>
         <span>{count}</span>
-        <Button onClick={sumarContador}>+</Button>
+        <Button className="btn-incrementador" onClick={sumarContador}>+</Button>
       </div>
-      <Button onClick={mensaje}>Agregar Producto</Button>
-    </Fragment>
+      <Button className="btn-onAdd" onClick={onAdd} block>Agregar Producto</Button>
+    </Space>
   );
 };
 
