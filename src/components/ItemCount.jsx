@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { message, Button, Space} from "antd";
 
-const ItemCount = (stock) => {
-  const [count, setCount] = useState(0);
+const ItemCount = (props) => {
+  const [count, setCount] = useState(props.initial);
 
   const onAdd = () => {
     if (count > 0) {
@@ -12,14 +12,14 @@ const ItemCount = (stock) => {
     }
   };
   const sumarContador = () => {
-    if (count === stock.stock) {
+    if (count === props.stock) {
       return;
     }
     setCount(count + 1);
   };
 
   const restarContador = () => {
-    if (count === 0) {
+    if (count === props.initial) {
       return;
     }
     setCount(count - 1);

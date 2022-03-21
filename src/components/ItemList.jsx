@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Col, Row, Image } from "antd";
-import ItemCount from "./ItemCount";
 import Item from "./Item";
 
 const datos = [
@@ -12,6 +11,7 @@ const datos = [
     precio: "S/ 4,549.00",
     imagen: "https://i.ibb.co/kc0QXn6/lap-Asus.webp",
     stock: 10,
+    initial: 1
   },
   {
     id: 2,
@@ -22,6 +22,7 @@ const datos = [
     precio: "S/ 3,799.00",
     imagen: "https://i.ibb.co/xX4PRmJ/lap-Hp.webp",
     stock: 8,
+    initial: 1
   },
   {
     id: 3,
@@ -31,6 +32,7 @@ const datos = [
     precio: "S/ 4,599.00",
     imagen: "https://i.ibb.co/pjdyRJQ/cel-Samsumg.webp",
     stock: 12,
+    initial: 1
   },
   {
     id: 4,
@@ -40,6 +42,7 @@ const datos = [
     precio: "S/ 399.00",
     imagen: "https://i.ibb.co/z254rw2/tab-Lenovo.webp",
     stock: 15,
+    initial: 1
   },
 ];
 
@@ -61,6 +64,7 @@ const ItemList = () => {
                 imagen={item.imagen}
                 descripcion={item.descripcion}
                 stock={item.stock}
+                initial = {item.initial}
               />
             </div>
           </Card>

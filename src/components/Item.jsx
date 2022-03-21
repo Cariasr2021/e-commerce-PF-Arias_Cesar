@@ -67,7 +67,7 @@ const Item = (props) => {
             <Space direction="vertical" style={{ paddingTop: 20 }}>
               <p>{promiseDatos.descripcion}</p>
               <h2 className="modal-precio">{promiseDatos.precio}</h2>
-              <ItemCount stock={props.stock} />
+              <ItemCount stock={props.stock} initial={props.initial}/>
             </Space>
           </Col>
         </Row>
