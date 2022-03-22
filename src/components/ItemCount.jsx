@@ -5,8 +5,9 @@ const ItemCount = (props) => {
   const [count, setCount] = useState(props.initial);
 
   const onAdd = () => {
-    if (count > 0) {
+    if (props.stock > 0) {
       message.success(`Producto agregado exitosamente: ${count}`);
+      props.onAdd(count)
     } else {
       message.error(`No ha agregado ningún producto: ${count}`);
     }

@@ -46,9 +46,6 @@ const datos = [
   },
 ];
 
-    
-
-
 const ItemList = () => {
   return (
     <Row gutter={[16, 24]}>
