@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Col, Row, Image } from "antd";
 import Item from "./Item";
 
@@ -11,7 +11,7 @@ const datos = [
     precio: "S/ 4,549.00",
     imagen: "https://i.ibb.co/kc0QXn6/lap-Asus.webp",
     stock: 10,
-    initial: 1
+    initial: 1,
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const datos = [
     precio: "S/ 3,799.00",
     imagen: "https://i.ibb.co/xX4PRmJ/lap-Hp.webp",
     stock: 8,
-    initial: 1
+    initial: 1,
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const datos = [
     precio: "S/ 4,599.00",
     imagen: "https://i.ibb.co/pjdyRJQ/cel-Samsumg.webp",
     stock: 12,
-    initial: 1
+    initial: 1,
   },
   {
     id: 4,
@@ -42,31 +42,71 @@ const datos = [
     precio: "S/ 399.00",
     imagen: "https://i.ibb.co/z254rw2/tab-Lenovo.webp",
     stock: 15,
-    initial: 1
+    initial: 1,
   },
 ];
 
+const obtenerDatos = () => {
+  return new Promise((resolve, reject) => {
+    let i = true;
+    if (i) {
+      setTimeout(() => {
+        resolve(datos);
+      }, 4000);
+    } else {
+      reject("Datos no encontrados...");
+    }
+  });
+};
+
 const ItemList = () => {
+  const [promiseDatos, setPromiseDatos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function mostrarDatos() {
+      try {
+        const res = await obtenerDatos();
+        setPromiseDatos(res);
+        // console.log(promiseDatos)
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    mostrarDatos();
+  }, []);
+
   return (
     <Row gutter={[16, 24]}>
-      {datos.map((item) => (
-        <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 6 }} key={item.id}>
-          <Card title={item.nombre} bordered={false}>
-            <div className="card-producto">
-              <Image src={item.imagen}></Image>
-              {/* <ItemCount stock={item.stock} /> */}
-              <Item
-                nombre={item.nombre}
-                precio={item.precio}
-                imagen={item.imagen}
-                descripcion={item.descripcion}
-                stock={item.stock}
-                initial = {item.initial}
-              />
-            </div>
-          </Card>
-        </Col>
-      ))}
+      {loading ? (
+        <h1>Cargando...</h1>
+      ) : (
+        promiseDatos.map((item) => (
+          <Col
+            xs={{ span: 24 }}
+            md={{ span: 12 }}
+            lg={{ span: 6 }}
+            key={item.id}
+          >
+            <Card title={item.nombre} bordered={false}>
+              <div className="card-producto">
+                <Image src={item.imagen}></Image>
+                {/* <ItemCount stock={item.stock} /> */}
+                <Item
+                  nombre={item.nombre}
+                  precio={item.precio}
+                  imagen={item.imagen}
+                  descripcion={item.descripcion}
+                  stock={item.stock}
+                  initial={item.initial}
+                />
+              </div>
+            </Card>
+          </Col>
+        ))
+      )}
     </Row>
   );
 };
