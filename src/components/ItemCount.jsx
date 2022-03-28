@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import { message, Button, Space} from "antd";
 
 const ItemCount = (props) => {
+  
   const [count, setCount] = useState(props.initial);
 
   const onAdd = () => {
@@ -25,7 +26,7 @@ const ItemCount = (props) => {
     }
     setCount(count - 1);
   };
-
+// console.log(props.initial)
   return (
     <Space direction="vertical" className="space-count" >
       <div className="card-contador" >

@@ -1,54 +1,50 @@
-import React, { useEffect, useState } from "react";
-import { Modal, Button, Image, Space, Row, Col } from "antd";
-import ItemCount from "./ItemCount";
+import React, { useState } from "react";
+import { Space, Row, Col, Card, Skeleton } from "antd";
 
-const Item = (props) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+import { StarFilled, StarOutlined } from "@ant-design/icons";
+import ItemDetailContainer from "./ItemDetailContainer";
+import { useNavigate } from "react-router-dom";
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
+const { Meta } = Card;
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+const Item = ({ id, nombre, precio, imagen, stock,categoria }) => {
+  const navigate = useNavigate()
+  
+  const verDetailItem = () => {
+    navigate(`/categoria/${categoria}/${id}`)
+    
+  }
 
   return (
-    <div>
-      <Button type="danger" onClick={showModal}>
-        Más información
-      </Button>
-
-      <Modal
-        width={600}
-        title={props.nombre}
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={[
-          <Button key="ok" onClick={handleOk}>
-            ok
-          </Button>,
-        ]}
+    <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 6 }} key={id}>
+      <Card
+        onClick={verDetailItem}
+        hoverable
+        cover={<img style={{ padding: "10px" }} alt="example" src={imagen} />}
       >
-        <Row gutter={[24]}>
-          <Col xs={{ span: 24 }} sm={{ span: 12 }}>
-            <Image src={props.imagen} />
-          </Col>
-          <Col xs={{ span: 24 }} sm={{ span: 12 }}>
-            <Space direction="vertical" style={{ paddingTop: 20 }}>
-              <p>{props.descripcion}</p>
-              <h2 className="modal-precio">{props.precio}</h2>
-              <ItemCount stock={props.stock} initial={props.initial} />
+        <Meta
+          title={nombre}
+          description={
+            <Space
+              direction="vertical"
+              size={[0, 0]}
+              align="start"
+              className="d-flex"
+            >
+              <del>S/ 5,000.00</del>
+              <p>{precio}</p>
+              <div>
+                <StarFilled />
+                <StarFilled />
+                <StarFilled />
+                <StarFilled />
+                <StarOutlined />
+              </div>
             </Space>
-          </Col>
-        </Row>
-      </Modal>
-    </div>
+          }
+        />
+      </Card>
+    </Col>
   );
 };
 

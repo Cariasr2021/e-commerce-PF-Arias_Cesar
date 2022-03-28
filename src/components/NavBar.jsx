@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import CartWidget from "./CartWidget";
+import {Link} from 'react-router-dom'
 
 const { SubMenu, Item } = Menu;
 
@@ -21,10 +22,10 @@ const NavBar = () => {
   };
   return (
     <header className="header">
-      <nav className="container">
+      <div className="container">
         <div className="nav-main">
           <div className="left">
-            <a href="# " className="logo-main">
+            <Link to='/' className="logo-main">
               <img
                 className="img-logo"
                 src="https://i.ibb.co/r0vbQ7F/logo-main.png"
@@ -33,31 +34,38 @@ const NavBar = () => {
               <p>
                 Gʌming<span>SHOP</span>
               </p>
-            </a>
+            </Link>
           </div>
 
           <Menu mode="horizontal" className="center">
-            <Item
-              key="cel"
-              className="hover-item-nav"
-              icon={<MobileOutlined className="icon-size" />}
-            >
-              Celulares/Tables
-            </Item>
-            <Item
-              key="games"
-              className="hover-item-nav"
-              icon={<RobotOutlined className="icon-size" />}
-            >
-              Videojuegos
-            </Item>
-            <Item
-              key="pcs"
-              className="hover-item-nav"
-              icon={<LaptopOutlined className="icon-size" />}
-            >
-              Laptops/Pcs
-            </Item>
+            <Link to='/categoria/celulares-tables'>
+              <Item
+                key="cel"
+                className="hover-item-nav"
+                icon={<MobileOutlined className="icon-size" />}
+              >
+                Celulares/Tables
+              </Item>
+            </Link>
+            <Link to='/categoria/videosjuegos'>
+              <Item
+                key="games"
+                className="hover-item-nav"
+                icon={<RobotOutlined className="icon-size" />}
+              >
+                Videojuegos
+              </Item>
+            
+            </Link>
+            <Link to='/categoria/laptops-pcs'>
+              <Item
+                key="pcs"
+                className="hover-item-nav"
+                icon={<LaptopOutlined className="icon-size" />}
+              >
+                Laptops/Pcs
+              </Item>
+            </Link>
           </Menu>
 
           <div className="button-center">
@@ -71,18 +79,18 @@ const NavBar = () => {
               visible={visible}
             >
               <div className="drawer-contenido">
-                <a className="drawer-link" href="# ">
+                <Link className="drawer-link" to='/celulares-tables'>
                   {" "}
                   <MobileOutlined /> Celulares/Tables
-                </a>
-                <a className="drawer-link" href="# ">
+                </Link>
+                <Link className="drawer-link" to='/videosjuegos'>
                   {" "}
                   <RobotOutlined /> Videojuegos
-                </a>
-                <a className="drawer-link" href="# ">
+                </Link>
+                <Link className="drawer-link" to='/laptops-pcs'>
                   {" "}
                   <LaptopOutlined /> Laptops/Pcs
-                </a>
+                </Link>
                 <button className="drawer-login">Iniciar Sesión</button>
               </div>
             </Drawer>
@@ -93,7 +101,7 @@ const NavBar = () => {
             <CartWidget />
           </div>
         </div>
-      </nav>
+      </div>
     </header>
   );
 };
