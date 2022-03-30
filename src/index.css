@@ -10,7 +10,7 @@
 /* COMPONENTS ----- NAVBAR-----  */
 .header{
   height: 70px !important;
-  background-color: #211d399c;
+  background-color: #475be9;
 }
 .container{
   max-width: 1300px;
@@ -57,6 +57,7 @@
 }
 .left{
   flex: 1;
+  background-color: #475be9;
 }
 /* .col-center{
   
@@ -192,14 +193,14 @@ align-items: center !important;
   cursor: pointer;
 }
 .contador-cartwidget{
-  background-color: #fff;
+  background-color: rgb(93, 238, 10);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 18px;
   height: 18px;
-  color: #211d399c;
+  color: #fff;
   margin: -20px 0px 0px -15px;
 }
 .icon-cartwidget .contador-cartwidget p{
@@ -223,7 +224,7 @@ align-items: center !important;
 /* FIN ----- Cart Widget ------- */
 /* COMPONENTS -------- Item List Widget ---------- */
 .itemListContainer{
-  text-align: center;
+  /* text-align: center; */
   margin-top: 20px;
 }
 
@@ -249,16 +250,14 @@ align-items: center !important;
   align-items: center;
 }
 .btn-onAdd{
-  background-color: #ea2840 !important;
-  border-color: #ea2840 !important;
+  background-color: #ff9306 !important;
+  border-color: #ff9306 !important;
   color: #fff !important;
-  border-radius: 8px !important;
+  border-radius: 5px !important;
+  font-weight: 700 !important;
 }
 .btn-incrementador{
-  background-color: #ea2840 !important;
-  border-color: #ea2840 !important;
-  color: #fff !important;
-  font-weight: 900 !important;
+  
   font-size: 18px !important;
   border-radius: 8px !important;
   height: unset !important;
@@ -270,9 +269,63 @@ align-items: center !important;
   color: #ea2840;
   font-weight: 700;
 }
+.precioDesc{
+  color: #ea2840;
+  font-weight: 500;
+  font-size: 26px;
+  margin-bottom: 2px;
+}
+.precioOriginal{
+  color:#475be9;
+  font-size: 16px;
+  font-weight: 500;
+}
 .ant-card-meta-description{
   display: flex;
 }
 .ant-card-body{
   padding-top: 0 !important;
+}
+.ant-card-hoverable:hover{
+  border-color: #475be9;
+}
+/* items */
+.ant-card-meta-description{
+  justify-content: center;
+}
+.col-reference{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin-top: 20px !important;
+}
+.col-datos{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+  line-height: 55px;
+  margin-top: 80px;
+}
+.logo-producto{
+  width: 110px !important;
+}
+.detail-precioOriginal{
+  font-size: 20px;
+  color: red;
+  font-weight: 700;
+}
+.col-datos p {
+  margin-bottom: 0;
+  color: #012b72;
+  font-weight: 700;
+  font-size: 20px;
+}
+.detail-precioActual{
+  font-size: 30px !important;
+  color: #ff5d2b !important;
+  font-weight: 500 !important;
+}
+.contenedor-datos{
+  border: 1px solid #66666663;
+  padding: 20px 15px;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Space, Row, Col, Card, Skeleton } from "antd";
+import { Space, Row, Col, Card, Skeleton, Rate } from "antd";
 
 import { StarFilled, StarOutlined } from "@ant-design/icons";
 import ItemDetailContainer from "./ItemDetailContainer";
@@ -7,11 +7,11 @@ import { useNavigate } from "react-router-dom";
 
 const { Meta } = Card;
 
-const Item = ({ id, nombre, precio, imagen, stock,categoria }) => {
+const Item = ({ id, nombre, precio, imagen, stock,categoria, precioOriginal }) => {
   const navigate = useNavigate()
   
   const verDetailItem = () => {
-    navigate(`/categoria/${categoria}/${id}`)
+    navigate(`/item/${id}`)
     
   }
 
@@ -28,17 +28,12 @@ const Item = ({ id, nombre, precio, imagen, stock,categoria }) => {
             <Space
               direction="vertical"
               size={[0, 0]}
-              align="start"
               className="d-flex"
             >
-              <del>S/ 5,000.00</del>
-              <p>{precio}</p>
+              <del className="precioOriginal">{precioOriginal}</del>
+              <p className="precioDesc">{precio}</p>
               <div>
-                <StarFilled />
-                <StarFilled />
-                <StarFilled />
-                <StarFilled />
-                <StarOutlined />
+                <Rate disabled defaultValue={4} />
               </div>
             </Space>
           }

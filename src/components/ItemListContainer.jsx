@@ -7,7 +7,7 @@ const ItemListContainer = () => {
   
   return (
     <div className="itemListContainer">
-      <h1>Nuestros Productos</h1>
+      {/* <h1 style={{color: '#475be9', fontSize:'30px'}}>Nuestros Productos</h1> */}
       <div className="site-card-wrapper container">
         <ItemList />
       </div>

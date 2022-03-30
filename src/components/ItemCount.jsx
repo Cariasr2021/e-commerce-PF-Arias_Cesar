@@ -30,11 +30,11 @@ const ItemCount = (props) => {
   return (
     <Space direction="vertical" className="space-count" >
       <div className="card-contador" >
-        <Button className="btn-incrementador" onClick={restarContador}>-</Button>
+        <Button className="btn-incrementador" onClick={restarContador} type='default'>-</Button>
         <span>{count}</span>
         <Button className="btn-incrementador" onClick={sumarContador}>+</Button>
       </div>
-      <Button className="btn-onAdd" onClick={onAdd} block>Agregar Producto</Button>
+      <Button className="btn-onAdd" onClick={onAdd} block>COMPRAR AHORA</Button>
     </Space>
   );
 };

@@ -38,32 +38,32 @@ const NavBar = () => {
           </div>
 
           <Menu mode="horizontal" className="center">
-            <Link to='/categoria/celulares-tables'>
+            <Link to='/categoria/laptops'>
               <Item
                 key="cel"
                 className="hover-item-nav"
-                icon={<MobileOutlined className="icon-size" />}
+                icon={<LaptopOutlined className="icon-size" />}
               >
-                Celulares/Tables
+                Laptops
               </Item>
             </Link>
-            <Link to='/categoria/videosjuegos'>
+            <Link to='/categoria/accesorios'>
               <Item
                 key="games"
                 className="hover-item-nav"
                 icon={<RobotOutlined className="icon-size" />}
               >
-                Videojuegos
+                Accesorios
               </Item>
             
             </Link>
-            <Link to='/categoria/laptops-pcs'>
+            <Link to='/categoria/impresoras'>
               <Item
                 key="pcs"
                 className="hover-item-nav"
-                icon={<LaptopOutlined className="icon-size" />}
+                icon={<MobileOutlined className="icon-size" />}
               >
-                Laptops/Pcs
+                Impresoras
               </Item>
             </Link>
           </Menu>
@@ -79,17 +79,17 @@ const NavBar = () => {
               visible={visible}
             >
               <div className="drawer-contenido">
-                <Link className="drawer-link" to='/celulares-tables'>
+                <Link className="drawer-link" to='/categoria/laptops'>
                   {" "}
-                  <MobileOutlined /> Celulares/Tables
+                  <MobileOutlined /> Laptops
                 </Link>
-                <Link className="drawer-link" to='/videosjuegos'>
+                <Link className="drawer-link" to='/categoria/accesorios'>
                   {" "}
-                  <RobotOutlined /> Videojuegos
+                  <RobotOutlined /> Accesorios
                 </Link>
-                <Link className="drawer-link" to='/laptops-pcs'>
+                <Link className="drawer-link" to='/categoria/impresoras'>
                   {" "}
-                  <LaptopOutlined /> Laptops/Pcs
+                  <LaptopOutlined /> Impresoras
                 </Link>
                 <button className="drawer-login">Iniciar Sesión</button>
               </div>

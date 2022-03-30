@@ -8,15 +8,20 @@ import { useParams } from "react-router-dom";
 
 const ItemList = () => {
   const [promiseDatos, setPromiseDatos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const {categoriaId} = useParams();
   console.log(categoriaId)
 
   useEffect(() => {
+    setLoading(true)
     async function mostrarDatos() {
       try {
         const res = await obtenerDatos();
-        setPromiseDatos(res);
+        if (categoriaId){
+          setPromiseDatos(res.filter((item) => item.categoria === categoriaId))
+        } else {
+          setPromiseDatos(res)
+        }
         // console.log(promiseDatos)
       } catch (error) {
         console.log(error);
@@ -25,7 +30,7 @@ const ItemList = () => {
       }
     }
     mostrarDatos();
-  }, []);
+  }, [categoriaId]);
 
   return (
     <Row gutter={[16, 24]}>

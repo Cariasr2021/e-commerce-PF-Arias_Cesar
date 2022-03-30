@@ -3,14 +3,16 @@ import ItemDetail from './ItemDetail'
 import { obtenerDatos } from './data/datos'
 import Skelet from './Skelet';
 import { useParams } from 'react-router-dom';
+import { Skeleton } from 'antd';
 
 const ItemDetailContainer = () => {
   const [promiseDetail, setPromiseDetail] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const {Id} = useParams();
   console.log(Id)
 
   useEffect(() => {
+    setLoading(true)
     async function mostrarDatos() {
       try {
         const res = await obtenerDatos();
@@ -27,11 +29,11 @@ const ItemDetailContainer = () => {
   
   return (
     <div className="itemListContainer">
-      <h1>Detalle del Producto</h1>
+      {/* <h1 style={{color: '#475be9', fontSize:'30px'}}>Detalle de Productos</h1> */}
       <div className="container">
         {
-         loading ? <Skelet /> : (
-          <ItemDetail {...promiseDetail}/>
+         loading ? <Skeleton active paragraph={{rows:4}}/>: (
+          <ItemDetail promiseDetail={promiseDetail}/>
          )
         }
         
