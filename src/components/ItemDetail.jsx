@@ -15,16 +15,16 @@ const ItemDetail = (props) => {
   //     SO: 'Windo
   return (
     <Row align='center'>
-      <Col span={18}>
+      <Col xs={{span:24}}  lg={{span:18}}>
         <h2>{nombre}</h2>
         <Row>
-          <Col span={12}>
+          <Col xs={{span:24}} lg={{span:12}}>
           <Image src={imagen}/>
           </Col>
           
-          <Col span={12} className='col-reference'>
+          <Col xs={{span:12}} lg={{span:12}} className='col-reference'>
             <h2>Referencias:</h2>
-            <ul>
+            <ul className='ul-reference'>
               <li>Marca: {marca}</li>
               <li>Modelo: {modelo}</li>
               <li>Producto: {producto}</li>
@@ -40,7 +40,7 @@ const ItemDetail = (props) => {
         </Row>
         
       </Col>
-      <Col span={6} className='col-datos'>
+      <Col xs={{span:24}}  lg={{span:6}} className='col-datos'>
           <img className='logo-producto' src={imgMarca} alt={marca} />
           <div className='contenedor-datos'>
             <del className='detail-precioOriginal'>{precioOriginal}</del>

@@ -15,7 +15,7 @@
 .container{
   max-width: 1300px;
   margin: 0 auto;
-  width: 90%;
+  width: 85%;
 }
 
 .nav-main{
@@ -299,12 +299,20 @@ align-items: center !important;
   align-items: center !important;
   margin-top: 20px !important;
 }
+.ul-reference{
+  margin-left: 40px !important;
+}
 .col-datos{
   display: flex !important;
   flex-direction: column !important;
   align-items: center;
   line-height: 55px;
   margin-top: 80px;
+}
+@media (max-width: 768px) {
+  .col-datos{
+    margin-top: 0;
+  }
 }
 .logo-producto{
   width: 110px !important;
@@ -328,4 +336,13 @@ align-items: center !important;
 .contenedor-datos{
   border: 1px solid #66666663;
   padding: 20px 15px;
+  width: 90%;
 }
+/* .ant-col-md-12 {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+}
+.ant-col-xs-12 {
+  flex: 0 0 65% !important;
+  max-width: 65% !important;
+} */
