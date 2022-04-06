@@ -9,7 +9,7 @@ const ItemDetailContainer = () => {
   const [promiseDetail, setPromiseDetail] = useState([]);
   const [loading, setLoading] = useState(false);
   const {Id} = useParams();
-  console.log(Id)
+  // console.log(Id)
 
   useEffect(() => {
     setLoading(true)

@@ -256,6 +256,13 @@ align-items: center !important;
   border-radius: 5px !important;
   font-weight: 700 !important;
 }
+.btn-onFinish{
+  background-color: #5CB85C !important;
+  border-color: #5CB85C !important;
+  color: #fff !important;
+  border-radius: 5px !important;
+  font-weight: 700 !important;
+}
 .btn-incrementador{
   
   font-size: 18px !important;

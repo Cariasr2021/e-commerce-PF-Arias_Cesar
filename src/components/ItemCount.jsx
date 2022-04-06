@@ -1,37 +1,31 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 import { message, Button, Space} from "antd";
+import { useNavigate } from "react-router-dom";
 
 const ItemCount = (props) => {
-  
-  const [count, setCount] = useState(props.initial);
 
-  const onAdd = () => {
-    if (props.stock > 0) {
-      message.success(`Producto agregado exitosamente: ${count}`);
-      props.onAdd(count)
-    } else {
-      message.error(`No ha agregado ningún producto: ${count}`);
-    }
-  };
+  const {cantidad, setCantidad, stock, initial, onAdd} = props
+  const navigate = useNavigate()
+ 
   const sumarContador = () => {
-    if (count === props.stock) {
+    if (cantidad === props.stock) {
       return;
     }
-    setCount(count + 1);
+    setCantidad(cantidad + 1);
   };
 
   const restarContador = () => {
-    if (count === props.initial) {
+    if (cantidad === initial) {
       return;
     }
-    setCount(count - 1);
+    setCantidad(cantidad - 1);
   };
 // console.log(props.initial)
   return (
     <Space direction="vertical" className="space-count" >
       <div className="card-contador" >
         <Button className="btn-incrementador" onClick={restarContador} type='default'>-</Button>
-        <span>{count}</span>
+        <span>{cantidad}</span>
         <Button className="btn-incrementador" onClick={sumarContador}>+</Button>
       </div>
       <Button className="btn-onAdd" onClick={onAdd} block>COMPRAR AHORA</Button>
