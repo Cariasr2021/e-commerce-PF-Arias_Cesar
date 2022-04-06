@@ -1,14 +1,15 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import ItemCount from './ItemCount'
 import {Link} from 'react-router-dom'
 import { Col, Image, Row, Space, message, Button } from 'antd'
+import { CartContext } from './context/CartContext'
 
 const ItemDetail = (props) => {
     const {id, nombre, precio, imagen, imgMarca, precioOriginal, stock, initial, marca, modelo, producto, procesador, tarjetaVideo, memoriaRAM, almacenamiento, pantalla, teclado, SO} = props.promiseDetail
   
     const [cantidad, setCantidad] = useState(initial);
-    const [irCarrito, setIrCarrito] = useState(true);
-    
+    // const [irCarrito, setIrCarrito] = useState(true);
+    const {addItem, cart, isInCart} = useContext(CartContext)
 
     const agregarCarrito = () => {
       const itemAgregado = {
@@ -16,22 +17,25 @@ const ItemDetail = (props) => {
         nombre,
         precio,
         imagen,
-        cantidad,
-        
+        cantidad
       }
-      console.log(itemAgregado)
+      // console.log(itemAgregado)
+      addItem(itemAgregado)
+      
     }
 
     const onAdd = () => {
       if (stock > 0) {
         message.success(`Producto agregado exitosamente: ${cantidad}`);
         agregarCarrito()
-        setIrCarrito(false)
+        // setIrCarrito(false)
         
       } else {
         message.error(`No ha agregado ningún producto: ${cantidad}`);
       }
     };
+
+    // console.log(cart)
   return (
     <Row align='center'>
       <Col xs={{span:24}}  lg={{span:18}}>
@@ -66,7 +70,7 @@ const ItemDetail = (props) => {
             <p>Precio actual:</p>
             <p className='detail-precioActual'>{precio}</p>
             {
-              irCarrito ? 
+              !isInCart(id) ? 
               <ItemCount stock={stock} initial={initial} cantidad={cantidad} setCantidad={setCantidad} onAdd={onAdd}/>
               : <Link to='/cart'><Button className='btn-onFinish' block>Terminar Compra</Button></Link>
             }
