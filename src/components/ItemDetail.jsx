@@ -7,11 +7,11 @@ import { CartContext } from './context/CartContext'
 const ItemDetail = (props) => {
     const {id, nombre, precio, imagen, imgMarca, precioOriginal, stock, initial, marca, modelo, producto, procesador, tarjetaVideo, memoriaRAM, almacenamiento, pantalla, teclado, SO} = props.promiseDetail
   
-    const [cantidad, setCantidad] = useState(initial);
+    
     // const [irCarrito, setIrCarrito] = useState(true);
     const {addItem, cart, isInCart} = useContext(CartContext)
 
-    const agregarCarrito = () => {
+    const agregarCarrito = (cantidad) => {
       const itemAgregado = {
         id,
         nombre,
@@ -24,10 +24,10 @@ const ItemDetail = (props) => {
       
     }
 
-    const onAdd = () => {
+    const onAdd = (cantidad) => {
       if (stock > 0) {
         message.success(`Producto agregado exitosamente: ${cantidad}`);
-        agregarCarrito()
+        agregarCarrito(cantidad)
         // setIrCarrito(false)
         
       } else {
@@ -71,7 +71,7 @@ const ItemDetail = (props) => {
             <p className='detail-precioActual'>{precio}</p>
             {
               !isInCart(id) ? 
-              <ItemCount stock={stock} initial={initial} cantidad={cantidad} setCantidad={setCantidad} onAdd={onAdd}/>
+              <ItemCount stock={stock} initial={initial}  onAdd={onAdd}/>
               : <Link to='/cart'><Button className='btn-onFinish' block>Terminar Compra</Button></Link>
             }
             
