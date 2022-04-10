@@ -66,9 +66,9 @@ const ItemDetail = (props) => {
       <Col xs={{span:24}}  lg={{span:6}} className='col-datos'>
           <img className='logo-producto' src={imgMarca} alt={marca} />
           <div className='contenedor-datos'>
-            <del className='detail-precioOriginal'>{precioOriginal}</del>
+            <del className='detail-precioOriginal'>S/. {precioOriginal}.00</del>
             <p>Precio actual:</p>
-            <p className='detail-precioActual'>{precio}</p>
+            <p className='detail-precioActual'>S/. {precio}.00</p>
             {
               !isInCart(id) ? 
               <ItemCount stock={stock} initial={initial}  onAdd={onAdd}/>

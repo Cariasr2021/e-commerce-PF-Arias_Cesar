@@ -30,8 +30,8 @@ const Item = ({ id, nombre, precio, imagen, stock,categoria, precioOriginal }) =
               size={[0, 0]}
               className="d-flex"
             >
-              <del className="precioOriginal">{precioOriginal}</del>
-              <p className="precioDesc">{precio}</p>
+              <del className="precioOriginal">S/. {precioOriginal}.00</del>
+              <p className="precioDesc">S/. {precio}.00</p>
               <div>
                 <Rate disabled defaultValue={4} />
               </div>

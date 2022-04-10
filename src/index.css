@@ -287,6 +287,9 @@ align-items: center !important;
   font-size: 16px;
   font-weight: 500;
 }
+.d-flex{
+  text-align: center;
+}
 .ant-card-meta-description{
   display: flex;
 }
@@ -347,6 +350,28 @@ align-items: center !important;
 }
 .icon-delete{
   font-size: 30px !important;
+}
+/* tablas */
+.table__carrito{
+  margin-top: 40px;
+}
+.total__cart{
+  margin: 20px 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 4fr 1fr;
+}
+.btn__volver{
+  margin-right: 20px;
+}
+.alert__cart{
+  margin-top: 40px !important;
+}
+.text__alert--cart{
+  margin-bottom: 0 !important;
+  margin-left: 10px !important;
+  color: #ea2840;
 }
 /* .ant-col-md-12 {
   flex: 0 0 100% !important;

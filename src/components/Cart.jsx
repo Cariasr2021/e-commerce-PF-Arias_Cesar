@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
 import { CartContext } from "./context/CartContext";
 import { DeleteFilled } from "@ant-design/icons";
-import { Table, Button } from "antd";
+import { Table, Button, Alert } from "antd";
+import { useNavigate } from "react-router-dom";
+import { clear } from "@testing-library/user-event/dist/clear";
 
 const Cart = () => {
-  const { cart, removeItem, clearCart } = useContext(CartContext);
+  const { cart, removeItem, clearCart, cartTotal, cartCantidad } = useContext(CartContext);
   console.log(cart);
+  const navigate = useNavigate();
+
   const columns = [
     {
       title: "ID",
@@ -46,8 +50,8 @@ const Cart = () => {
       id: item.id,
       producto: item.nombre,
       cantidad: item.cantidad,
-      precio: item.precio,
-      total: 'Por definirse',
+      precio: `S/. ${item.precio}`,
+      total: `S/. ${item.precio * item.cantidad}`,
       operation: (
         <Button
           onClick={() => removeItem(item.id)}
@@ -60,13 +64,55 @@ const Cart = () => {
       ),
     })
   );
-  // console.log(data.columns[0].dataIndex)
+  const volverNavegar = () => {
+    navigate(-1);
+  };
 
+  // console.log(data.columns[0].dataIndex)
   return (
-  <div className="container">
-      <Table columns={columns} dataSource={data} />
-      <Button size="large" type="primary" danger onClick={clearCart}>Limpiar el Carrito</Button>
-  </div>
+    <div className="container">
+      {cartCantidad() !== 0 ? (
+        <>
+          <Table
+            className="table__carrito"
+            columns={columns}
+            dataSource={data}
+            pagination={false}
+          />
+          <div className="total__cart">
+            <h2>Total a Pagar:</h2>
+            <p>S/. {cartTotal()}</p>
+          </div>
+          <Button
+            size="large"
+            type="primary"
+            onClick={volverNavegar}
+            className="btn__volver"
+          >
+            Volver
+          </Button>
+          <Button size="large" type="primary" danger onClick={clearCart}>
+            Limpiar el Carrito
+          </Button>
+        </>
+      ) : (
+        <>
+          <Alert className="alert__cart" message={<h2 className="text__alert--cart">El carro está vacío</h2>} type="error" action={
+            <Button
+            size="large"
+            type="inline"
+            danger
+            onClick={volverNavegar}
+            className="btn__volver"
+          >
+            Volver
+          </Button>
+          }/>
+          
+          
+        </>
+      )}
+    </div>
   );
 };
 
