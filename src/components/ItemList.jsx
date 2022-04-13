@@ -4,6 +4,8 @@ import Item from "./Item";
 import Skelet from "./Skelet";
 import { obtenerDatos } from "./data/datos";
 import { useParams } from "react-router-dom";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../firebase/config";
 
 
 const ItemList = () => {
@@ -14,22 +16,19 @@ const ItemList = () => {
 
   useEffect(() => {
     setLoading(true)
-    async function mostrarDatos() {
-      try {
-        const res = await obtenerDatos();
-        if (categoriaId){
-          setPromiseDatos(res.filter((item) => item.categoria === categoriaId))
-        } else {
-          setPromiseDatos(res)
-        }
-        // console.log(promiseDatos)
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    mostrarDatos();
+    //1- Armar la referencia
+    const productRef = collection(db, 'productos')
+    const q = categoriaId ? query(productRef, where('categoria','==',categoriaId)) : productRef
+    getDocs(q)
+      .then(res => {
+        const item = res.docs.map(doc => ({id: doc.id, ...doc.data()}))
+        
+        setPromiseDatos(item)
+      } )
+      .finally(() => {
+        setLoading(false)
+      })
+    
   }, [categoriaId]);
 
   return (

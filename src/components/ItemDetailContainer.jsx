@@ -4,6 +4,8 @@ import { obtenerDatos } from './data/datos'
 import Skelet from './Skelet';
 import { useParams } from 'react-router-dom';
 import { Skeleton } from 'antd';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
 const ItemDetailContainer = () => {
   const [promiseDetail, setPromiseDetail] = useState([]);
@@ -13,19 +15,16 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     setLoading(true)
-    async function mostrarDatos() {
-      try {
-        const res = await obtenerDatos();
-        setPromiseDetail(res.find((item) => item.id === Number(Id)));
+    const itemDetailRef = doc(db, 'productos', Id)
+    getDoc(itemDetailRef)
+      .then((res) => {
+        const item = {id: res.id, ...res.data()}
         
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    mostrarDatos();
-  }, [promiseDetail, Id]);
+        setPromiseDetail(item)
+      }).finally(() => {
+        setLoading(false)
+      })
+  }, [ Id]);
   
   return (
     <div className="itemListContainer">
