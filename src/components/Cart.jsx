@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "./context/CartContext";
 import { DeleteFilled } from "@ant-design/icons";
-import { Table, Button, Alert } from "antd";
+import { Table, Button, Alert, Space, Row } from "antd";
 import { useNavigate } from "react-router-dom";
 import { clear } from "@testing-library/user-event/dist/clear";
 
@@ -67,7 +67,9 @@ const Cart = () => {
   const volverNavegar = () => {
     navigate(-1);
   };
-
+  const navegarLogin = () => {
+    navigate('/login')
+  }
   // console.log(data.columns[0].dataIndex)
   return (
     <div className="container">
@@ -83,17 +85,22 @@ const Cart = () => {
             <h2>Total a Pagar:</h2>
             <p>S/. {cartTotal()}</p>
           </div>
-          <Button
-            size="large"
-            type="primary"
-            onClick={volverNavegar}
-            className="btn__volver"
-          >
-            Volver
-          </Button>
-          <Button size="large" type="primary" danger onClick={clearCart}>
-            Limpiar el Carrito
-          </Button>
+          <Row justify="space-between">
+            <Space>
+              <Button
+                size="large"
+                type="primary"
+                onClick={volverNavegar}
+                className="btn__volver"
+              >
+                Volver
+              </Button>
+              <Button size="large" type="primary" className="btn_limpiar-cart" onClick={clearCart}>
+                Limpiar el Carrito
+              </Button>
+            </Space>
+            <Button type="primary" size="large" className="btn_pedido" onClick={navegarLogin}>Realizar Pedido</Button>
+          </Row>
         </>
       ) : (
         <>
@@ -103,7 +110,7 @@ const Cart = () => {
             type="inline"
             danger
             onClick={volverNavegar}
-            className="btn__volver"
+            className="btn__volver-vacio"
           >
             Volver
           </Button>
