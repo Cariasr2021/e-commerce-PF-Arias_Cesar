@@ -12,7 +12,7 @@ const ItemList = () => {
   const [promiseDatos, setPromiseDatos] = useState([]);
   const [loading, setLoading] = useState(false);
   const {categoriaId} = useParams();
-  console.log(categoriaId)
+  
 
   useEffect(() => {
     setLoading(true)
@@ -30,9 +30,9 @@ const ItemList = () => {
       })
     
   }, [categoriaId]);
-
+  
   return (
-    <Row gutter={[16, 24]}>
+    <Row gutter={[40, 90]}>
       {loading ? (
         <Fragment>
           <Skelet />

@@ -6,7 +6,7 @@ import {
     Select,
     Button
   } from 'antd';
-import { collection, addDoc, Timestamp } from 'firebase/firestore';
+import { collection, addDoc, Timestamp, doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { Navigate, Link} from 'react-router-dom';
 
@@ -41,13 +41,30 @@ const Login = () => {
             fyh: Timestamp.fromDate(new Date())
         }
         const pedidoRef = collection(db, 'pedidos')
+
+        cart.forEach((item) => {
+            const docRef = doc(db, 'productos', item.id)
+
+            getDoc(docRef)
+                .then((doc) => {
+                    if(doc.data().stock >= item.cantidad){
+                        updateDoc(docRef, {
+                            stock: doc.data().stock - item.cantidad
+                        })
+                    } else{
+                        alert('no hay suficiente stock')
+                    }
+                    
+                })
+        })
         addDoc(pedidoRef, pedido)
             .then(doc => {
-                console.log(doc.id)
+                // console.log(doc.id)
                 setPedidoId(doc.id)
                 clearCart()
-            })
+             })
         console.log(pedido)
+        // console.log(cart)
     }
     if(pedidoId){
         return (

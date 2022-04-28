@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react'
 import ItemCount from './ItemCount'
 import {Link} from 'react-router-dom'
-import { Col, Image, Row, Space, message, Button } from 'antd'
+import { Col, Image, Row, Space, message, Button, Rate } from 'antd'
 import { CartContext } from './context/CartContext'
 
 const ItemDetail = (props) => {
@@ -16,6 +16,7 @@ const ItemDetail = (props) => {
         id,
         nombre,
         precio,
+        precioOriginal,
         imagen,
         cantidad
       }
@@ -37,8 +38,54 @@ const ItemDetail = (props) => {
 
     // console.log(cart)
   return (
-    <Row align='center'>
-      <Col xs={{span:24}}  lg={{span:18}}>
+    <>
+    
+    <Row gutter={[40, 90]} wrap={false} >
+      <Col span={12}>
+        <Image.PreviewGroup>
+          <div className='img_groupMain'>
+            <Image width={451} src={imagen}/>
+            <div className='flex__imgDetalle'>
+              <Image
+                width={90}
+                src={imagen}
+              />
+              <Image
+                width={90}
+                src={imagen}
+              />
+              <Image
+                width={90}
+                src={imagen}
+              />
+            </div>
+          </div>
+        </Image.PreviewGroup>
+      </Col>
+      <Col span={12}>
+        <span className='span__stock'>({stock} disponibles)</span>
+        <h2 className='titulo__producto--detalil'>{nombre}</h2>
+        <Rate disabled defaultValue={4} />
+        <div className='flex__precio--detail'>
+          <div>
+            <p className='text__precio'>Precio: S/{precio}</p>
+            <del className='text__precioDel'>Precio regular: S/{precioOriginal}</del>
+          </div>
+          <div className="descuento__cart--detail">
+            -10%
+          </div>
+        </div>
+        {
+            !isInCart(id) ? 
+            <ItemCount stock={stock} initial={initial}  onAdd={onAdd}/>
+            : 
+            <Link to='/cart'>
+              <Button className='btn__comprar--detail' >Terminar Compra</Button>
+            </Link>
+            }
+
+      </Col>
+      {/* <Col xs={{span:24}}  lg={{span:18}}>
         <h2>{nombre}</h2>
         <Row>
           <Col xs={{span:24}} lg={{span:12}}>
@@ -76,11 +123,31 @@ const ItemDetail = (props) => {
             }
             
           </div>
-      </Col>
-        
-      
-      
+      </Col> */}
     </Row>
+    <Row className='row-characters'>
+      <Col span={24}>
+        <h3 className='titulo__caracteristicas'>Características</h3>
+        <ul className='ul-reference'>
+          <div>
+            <li>Marca: {marca}</li>
+            <li>Modelo: {modelo}</li>
+            <li>Producto: {producto}</li>
+            <li>Procesador: {procesador}</li>
+            <li>Tarjeta de video: {tarjetaVideo}</li>
+          </div>
+          <div>
+            <li>Memoria RAM: {memoriaRAM}</li>
+            <li>Almacenamiento: {almacenamiento}</li>
+            <li>Pantalla: {pantalla}</li>
+            <li>Teclado: {teclado}</li>
+            <li>Sistema operativo: {SO}</li>
+          </div>
+        </ul>
+      
+      </Col>
+    </Row>
+    </>
   )
 }
 
