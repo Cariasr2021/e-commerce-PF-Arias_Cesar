@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { message, Button, Space} from "antd";
+import { message, Button, Space, Alert} from "antd";
 import { HeartOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
@@ -25,22 +25,42 @@ const ItemCount = (props) => {
 // console.log(props.initial)
   return (
     <>
-      <div className="flex-counter">
-        <p className="titulo__cantidad--contador">Cantidad</p>
-        <div className="container-counter"> 
-          <Button className="btn-incrementador btn__lado--menos" onClick={restarContador} type='text' >-</Button>
-          <span>{cantidad}</span>
-          <Button className="btn-incrementador btn__lado--mas" onClick={sumarContador} type='text' >+</Button>
+      {
+        stock === 0 ? <Alert
+        className="alert__stock"
+        description="Este producto ya no está disponible"
+        type="warning"
+        showIcon
+      /> :
+        <div className="flex-counter">
+          <p className="titulo__cantidad--contador">Cantidad</p>
+          <div className="container-counter"> 
+            <Button className="btn-incrementador btn__lado--menos" onClick={restarContador} type='text' >-</Button>
+            <span>{cantidad}</span>
+            <Button className="btn-incrementador btn__lado--mas" onClick={sumarContador} type='text' >+</Button>
+          </div>
         </div>
-      </div>
-      <div className="flex__buttons--detail">
-        <Button className="btn__agregarCart--detail">
-          Añadir al Carrito
-        </Button>
-        <Button className="btn__comprar--detail" onClick={() => onAdd(cantidad)}>
-          Comprar
-        </Button>
-      </div>
+      }
+      {
+        stock === 0 ? 
+        <div className="flex__buttons--detail">
+          <Button className="btn__agregarCart--detail btn__disabled" disabled>
+            Añadir al Carrito
+          </Button>
+          <Button className="btn__comprar--detail btn__disabled" onClick={() => onAdd(cantidad)} disabled>
+            Comprar
+          </Button>
+        </div> : 
+        <div className="flex__buttons--detail">
+          <Button className="btn__agregarCart--detail">
+            Añadir al Carrito
+          </Button>
+          <Button className="btn__comprar--detail" onClick={() => onAdd(cantidad)}>
+            Comprar
+          </Button>
+        </div>
+      }
+      
       
       <Button className="btn__favoritos--detail" type="text"
         ><HeartOutlined />Añadir a mis favoritos

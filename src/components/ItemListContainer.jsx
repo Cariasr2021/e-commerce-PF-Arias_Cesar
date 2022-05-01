@@ -27,10 +27,10 @@ const ItemListContainer = () => {
           <img src="https://i.ibb.co/sQ5Df61/icon-pinter.png" alt="icon-lap" />
           <h1 className="titulo__productos">Impresoras</h1> 
         </div>
-        : <h1 className="titulo__productos container">Productos destacados</h1>))
+        : <h1 className="titulo__productos margin__productosDest container">Productos destacados</h1>))
       }
       {/* <h1 style={{color: '#475be9', fontSize:'30px'}}>Nuestros Productos</h1> */}
-      <div className=" container">
+      <div className="listContainer__main">
         <ItemList />
       </div>
     </div>

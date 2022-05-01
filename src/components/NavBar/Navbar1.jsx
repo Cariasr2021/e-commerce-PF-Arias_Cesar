@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import { Menu, Layout, Space, Button, Input } from 'antd';
 import './navbar1.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SearchOutlined, HeartOutlined } from '@ant-design/icons';
 import CartWidget from '../CartWidget';
+import { CartContext } from '../context/CartContext';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth';
+import { signup, auth } from '../../firebase/config';
+import { async } from '@firebase/util';
 
 const {Header} = Layout;
 const { Search } = Input;
+
+
 const items = [
   {
     label: (
@@ -39,12 +45,25 @@ const items = [
 
 const Navbar1 = () => {
   const [current, setCurrent] = React.useState('laptop');
-
+  const [user, setUser] = useState({})
+  
+  const navigate = useNavigate();
+    
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser)
+})
   const onClick = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
   };
-
+  const navegarLogin = () => {
+    navigate('/login')
+  }
+  
+  const cerrarSesión = async () => {
+      await signOut(auth)
+  }
+  console.log(user)
   return (
   <>
     <Header className='header__navbar'>
@@ -70,9 +89,18 @@ const Navbar1 = () => {
                 <Menu onClick={onClick} className='menu__navbar'  mode="horizontal" items={items} />
             </div>
             <div className='navbar__right'>
-                <Button className='btn__login'>
-                    Iniciar Sesión
-                </Button>
+            {
+                    user === null ?  
+                    <Button className='btn__login' onClick={navegarLogin}>
+                        Iniciar Sesión
+                    </Button>
+                    : <div className='flex__usuario'>
+                    <p className='usuario__text'>Hola, {user?.email}</p> 
+                    <Button className='btn__login' onClick={cerrarSesión}>Cerrar Sesión</Button>
+                    </div>
+                }
+                
+                {/*  */}
                 <div className='icon__right'>
                     <HeartOutlined className='icon_heart'/>
                     <CartWidget />

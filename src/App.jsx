@@ -15,6 +15,7 @@ import Login from "./components/Login";
 import { Slider } from "antd";
 import Carrousel from "./components/Slider/Carrousel";
 import Footer from './components/Footer/Foot'
+import Register from "./components/Register";
 
 function App() {
   
@@ -37,6 +38,7 @@ function App() {
           <Route path="/item/:Id" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
 

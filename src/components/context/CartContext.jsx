@@ -1,10 +1,18 @@
 import { Children, createContext, useState } from "react";
 
+
 export const CartContext = createContext()
 
 export const CartProvider = ({children}) => {
 
     const [cart, setCart] = useState([])
+    const [user, setUser] = useState({})
+
+  // const saveUser = () =>{
+  //   return onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser)
+  // })
+  // }
 
   const addItem = (item) => {
     setCart([...cart, item])
@@ -34,7 +42,8 @@ export const CartProvider = ({children}) => {
             cartTotal,
             isInCart,
             clearCart,
-            removeItem
+            removeItem,
+            
           }}>
         {children}
         </CartContext.Provider>
