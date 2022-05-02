@@ -15,11 +15,12 @@
 }
 .logo__footer{
     width: 301px;
-    height: 96px;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #fff;
+    border-radius: 10px !important;
 }
 .flex__icons--footer{
     display: flex;
@@ -30,6 +31,7 @@
 }
 .icon__footer{
     font-size: 40px;
+    color: #fff !important;
 }
 .footer__copyright{
     border-top: 1px solid #FFFFFF;

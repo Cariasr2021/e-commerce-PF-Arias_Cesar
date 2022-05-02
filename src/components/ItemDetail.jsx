@@ -1,15 +1,19 @@
 import React, {useContext, useState} from 'react'
 import ItemCount from './ItemCount'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { Col, Image, Row, Space, message, Button, Rate } from 'antd'
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import { CartContext } from './context/CartContext'
 
 const ItemDetail = (props) => {
     const {id, nombre, precio, imagen, imgMarca, precioOriginal, stock, initial, marca, modelo, producto, procesador, tarjetaVideo, memoriaRAM, almacenamiento, pantalla, teclado, SO} = props.promiseDetail
   
-    
+    const navigate = useNavigate()
     // const [irCarrito, setIrCarrito] = useState(true);
     const {addItem, cart, isInCart} = useContext(CartContext)
+    const volverNavegar = () => {
+      navigate(-1);
+    };
 
     const agregarCarrito = (cantidad) => {
       const itemAgregado = {
@@ -39,30 +43,35 @@ const ItemDetail = (props) => {
     // console.log(cart)
   return (
     <>
-    
+    <Row className='container row__top'>
+      <Col span={24}>
+      <Button onClick={volverNavegar} className="btn__regresar--cart" type="text"><ArrowLeftOutlined /> Regresar</Button>
+      </Col>
+    </Row>
     <Row gutter={[40, 90]} wrap={false} >
-      <Col span={12}>
+    
+      <Col md={{ span: 24 }} lg={{ span: 12 }}>
         <Image.PreviewGroup>
           <div className='img_groupMain'>
-            <Image width={451} src={imagen}/>
+            <Image className='image__detail' src={imagen}/>
             <div className='flex__imgDetalle'>
               <Image
-                width={90}
+                className='image__detail--cuadro'
                 src={imagen}
               />
               <Image
-                width={90}
+                className='image__detail--cuadro'
                 src={imagen}
               />
               <Image
-                width={90}
+                className='image__detail--cuadro'
                 src={imagen}
               />
             </div>
           </div>
         </Image.PreviewGroup>
       </Col>
-      <Col span={12}>
+      <Col md={{ span: 24 }} lg={{ span: 12 }}>
         <span className='span__stock'>({stock} disponibles)</span>
         <h2 className='titulo__producto--detalil'>{nombre}</h2>
         <Rate disabled defaultValue={4} />

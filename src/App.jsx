@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
-import NavBar from "./components/NavBar";
 import Navbar1 from './components/NavBar/Navbar1'
 import {
   BrowserRouter as Router,
@@ -12,10 +11,10 @@ import {
 import Cart from "./components/Cart";
 import { CartContext, CartProvider } from "./components/context/CartContext";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import { Slider } from "antd";
 import Carrousel from "./components/Slider/Carrousel";
 import Footer from './components/Footer/Foot'
-import Register from "./components/Register";
 
 function App() {
   
@@ -23,7 +22,7 @@ function App() {
   return (
     <CartProvider>
       <Router>
-        {/* <NavBar /> */}
+        
         <Navbar1 />
         
         <Routes>

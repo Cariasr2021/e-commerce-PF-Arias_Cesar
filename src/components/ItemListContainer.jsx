@@ -29,7 +29,7 @@ const ItemListContainer = () => {
         </div>
         : <h1 className="titulo__productos margin__productosDest container">Productos destacados</h1>))
       }
-      {/* <h1 style={{color: '#475be9', fontSize:'30px'}}>Nuestros Productos</h1> */}
+      
       <div className="listContainer__main">
         <ItemList />
       </div>

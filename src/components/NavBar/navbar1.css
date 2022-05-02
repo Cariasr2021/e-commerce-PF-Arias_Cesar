@@ -64,15 +64,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
 }
 .flex__usuario{
     display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 .usuario__text{
     font-size: 18px;
     font-family: var(--fontPoppin) !important;
     color: #170F49 !important;
     line-height: 1.5;
+    margin: 0;
 }
 .btn__login{
     background: rgba(74, 58, 255, 1) !important;
@@ -80,7 +86,7 @@
     width: 150px;
     height: 54px;
     color: #fff !important;
-    margin-bottom: 35px;
+    /* margin-bottom: 35px; */
     font-size: 16px !important;
     font-family: var(--fontPoppin) !important;
     font-weight: 700 !important;
@@ -90,8 +96,114 @@
     align-items: center;
     gap: 30px;
     margin-right: 70px;
+    margin-bottom: 20px;
 }
 .icon_heart{
     font-size: 25px !important;
     color: #000;
+}
+.display__hamburger{
+    display: none;
+}
+@media (max-width: 768px) {
+    .header__navbar{
+        padding: 0;
+        height: 60px !important;
+        margin: 0 !important;
+        margin: 20px auto !important;
+    }
+    .d-flex__submenu{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        justify-items: center !important;
+    }
+    .categoria__navbar{
+        color: #170F49 !important;
+        font-size: 16px !important;
+        font-family: var(--fontPoppin) !important;
+        width: 100% !important;
+        height: 44px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .ant-drawer-body{
+        padding: 0 !important;
+        
+    }
+    .categoria__navbar:hover{
+        background: #EAE8FF !important;
+        color: #170F49 !important;
+    }
+    .display__hamburger{
+        display: unset;
+    }
+    .navbar__direction{
+        display: flex;
+        
+        align-items: center !important;
+        
+    }
+    .btn__hamburger{
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+    }
+    .d__flex__logo--menu{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .logo__img--menu{
+        width: 100px;
+        height: 80px;
+        
+    }
+    .navbar__buscador{
+        margin-bottom: 0 !important;
+    }
+    .navbar__logo{
+        width: 70px !important;
+        height: 50px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .menu__navbar{
+        display: none;
+    }
+    .icon__right{
+        margin: 0 !important;
+    }
+    .btn__login{
+        display: none;
+    }
+    .flex__usuario{
+        display: none;
+    }
+    .flex__usuario--hamburger{
+        display: flex;
+        flex-direction: column;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 10px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    .btn__login--hamburger{
+        background: rgba(74, 58, 255, 1) !important;
+        border-radius: 76px;
+        width: 150px;
+        height: 54px;
+        color: #fff !important;
+        /* margin-bottom: 35px; */
+        font-size: 16px !important;
+        font-family: var(--fontPoppin) !important;
+        font-weight: 700 !important;
+    }
+    .icon_heart{
+        display: none;
+    }
 }

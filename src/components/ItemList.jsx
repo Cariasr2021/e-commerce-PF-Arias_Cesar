@@ -1,8 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Row, Skeleton, Col, Space } from "antd";
+import { Row} from "antd";
 import Item from "./Item";
 import Skelet from "./Skelet";
-import { obtenerDatos } from "./data/datos";
 import { useParams } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase/config";
